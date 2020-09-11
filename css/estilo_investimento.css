@@ -1,0 +1,53 @@
+html, body, #home {
+    height: 100%;
+    overflow-x: hidden; /* esconder a barra horizontal da pagina web*/
+}
+
+#home {
+    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
+    padding-top: 150px;
+}
+
+body {
+    background: rgba(171, 197, 177, 0.8);
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav.navbar-transparente {
+    padding: 15px 0px;
+    background: rgba(171, 197, 177, 0.8);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #082ae931;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.divisor {
+    width: 1px;
+    background: black;
+    margin: 12px 15px;
+}
+
+.btn-custom {
+    color: rgb(2, 2, 2);
+    border-radius: 500px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    text-transform: uppercase;
+    transition: background 0.4s, 0.4s;
+    padding: 10px 20px;
+}
+
+h3 {
+    padding: 20px;
+}

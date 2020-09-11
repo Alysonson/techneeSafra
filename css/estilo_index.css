@@ -4,7 +4,7 @@ html, body, #home {
 }
 
 #home {
-    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);;
+    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
 }
 
 body {
@@ -69,7 +69,7 @@ h3 {
     -moz-border-radius: 500px;
     text-transform: uppercase;
     transition: background 0.4s, 0.4s;
-    padding: 10px 20px;
+    padding: 100px;
 }
 
 .btn-roxo {
