@@ -100,16 +100,21 @@ var formatter = new Intl.NumberFormat('pt-BR', {
 function dimensionamento() {
     var Consumo = parseFloat(document.getElementById("consumo").value);
     var Area_telhado = parseFloat(document.getElementById("area_telhado").value);
+
     calculo = new Calculo(Consumo, Area_telhado);
 
     qtd_paineis = calculo.numeroPainel();
     pct_invest = calculo.telhadoEspaco(qtd_paineis);
 
     preco_inversor = calculo.custoInversor(qtd_paineis, pct_invest);
-    preco_paineis = calculo.custoPaineis(qtd_paineis);
+    preco_paineis = calculo.custoPaineis(qtd_paineis, pct_invest);
     mao_de_obra = calculo.custoMaoDeObra(qtd_paineis);
     equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis);
+
+    console.log(preco_inversor, preco_paineis, mao_de_obra, equip_ele);
     custo_projeto = Math.ceil(calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele));
+
+    console.log(custo_projeto);
 
     document.getElementById("resultado").innerHTML = `O seu projeto irá custar aproximadamente R$ ${formatter.format(custo_projeto)}`;
 
