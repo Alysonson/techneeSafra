@@ -102,16 +102,16 @@ function dimensionamento() {
     var area_telhado = parseFloat(document.getElementById("area_telhado").value)
     calculo = new Calculo(consumo, area_telhado)
 
-    document.getElementById("resultado").innerHTML = `O seu projeto irá custar aproximadamente R$ ${formatter.format(custo_projeto)}`;
-
-    document.getElementById('resultado').scrollIntoView({ behavior: "smooth" });
-
+    qtd_paineis = calculo.numeroPainel()
+    pct_invest = calculo.telhadoEspaco(qtd_paineis)
     preco_inversor = calculo.custoInversor(qtd_paineis, pct_invest)
     preco_paineis = calculo.custoPaineis(qtd_paineis, pct_invest)
     mao_de_obra = calculo.custoMaoDeObra(qtd_paineis)
     equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis)
     custo_projeto = calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele)
-     console.log(custo_projeto)
+
+    document.getElementById("resultado").innerHTML = `O seu projeto irá custar aproximadamente R$ ${formatter.format(custo_projeto)}`;
+    document.getElementById('resultado').scrollIntoView({ behavior: "smooth" });
 
 
     document.getElementById('dinheiro').value = custo_projeto;
@@ -122,15 +122,21 @@ function dimensionamento() {
 
 function alterar1() {
     document.getElementById("curto_prazo").className = "dropdown-item active"
+    document.getElementById("medio_prazo").className = "dropdown-item"
+    document.getElementById("longo_prazo").className = "dropdown-item"
     document.getElementById("opcoes").innerHTML = "até 2 anos"
 }
 
 function alterar2() {
+    document.getElementById("curto_prazo").className = "dropdown-item"
     document.getElementById("medio_prazo").className = "dropdown-item active"
+    document.getElementById("longo_prazo").className = "dropdown-item"
     document.getElementById("opcoes").innerHTML = "até 4 anos"
 }
 
 function alterar3() {
+    document.getElementById("curto_prazo").className = "dropdown-item"
+    document.getElementById("medio_prazo").className = "dropdown-item"
     document.getElementById("longo_prazo").className = "dropdown-item active"
     document.getElementById("opcoes").innerHTML = "até 6 anos"
 }
@@ -152,6 +158,7 @@ function simulacao() {
     else {
         alert("Você não escolheu uma opção de tempo de empréstimo, será mostrado automaticmante a de 2 anos")
         var juros = 0.008
+        var parcelas = 24
     }
 
     var valor_monetario = parseFloat(document.getElementById("dinheiro").value)
@@ -165,9 +172,15 @@ function simulacao() {
     }
     else {
         var consumo_regular = parseFloat(document.getElementById("consumo").value);
+        var area_telhado2 = parseFloat(document.getElementById("area_telhado").value)
+        calculo2 = new Calculo(consumo_regular, area_telhado2)
+        num_paineis = calculo2.numeroPainel()
+        parte_usada = calculo2.telhadoEspaco(num_paineis) / 100
+
     }
 
-    var preco_consumo = 0.9 * consumo_regular;
+    var preco_consumo = 0.9 * consumo_regular * parte_usada;
+
     var tempo_retorno = valor_financeamento / preco_consumo;
 
     console.log(document.getElementsByClassName("dropdown-menu").value);
