@@ -144,20 +144,23 @@ function simulacao() {
 
     if (document.getElementById("curto_prazo").className == "dropdown-item active") {
         var juros = 0.008
+        var parcelas = 24
     }
     else if (document.getElementById("medio_prazo").className == "dropdown-item active") {
         var juros = 0.01
+        var parcelas = 48
     }
     else if (document.getElementById("longo_prazo").className == "dropdown-item active") {
         var juros = 0.012
+        var parcelas = 72
     }
     else {
         alert("Você não escolheu uma opção de tempo de empréstimo, será mostrado automaticmante a de 2 anos")
         var juros = 0.008
-
+        var parcelas = 24
     }
 
-    var parcelas = 24
+
     var valor_monetario = parseFloat(document.getElementById("dinheiro").value)
 
     var coeficiente_financeamento = juros / (1 - ((1 + juros) ** (parcelas * -1)));

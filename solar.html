@@ -124,12 +124,11 @@
           </div>
           </form>
         </div>
+        <div class="col-md-6 d-flex d-none d-md-block">
+          <!-- d-none e d-md-block: img não aparecer em medium devices  -->
+          <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
+        </div>
       </div>
-      <div class="col-md-6 d-flex d-none d-md-block">
-        <!-- d-none e d-md-block: img não aparecer em medium devices  -->
-        <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
-      </div>
-    </div>
     </div>
   </section>
 
@@ -138,13 +137,9 @@
   </div>
 
   <script>
-    $(".dropdown-menu li a").click(function () {
 
-      $(".btn:first-child").html($(this).text() + ' <span class="caret"></span>');
-
-    });
-
-    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+      'November', 'December'];
     var color = Chart.helpers.color;
     var barChartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -205,7 +200,6 @@
         dataset.data = dataset.data.map(function () {
           return zero ? 0.0 : randomScalingFactor();
         });
-
       });
       window.myBar.update();
     });
@@ -221,25 +215,22 @@
         borderWidth: 1,
         data: []
       };
-
       for (var index = 0; index < barChartData.labels.length; ++index) {
         newDataset.data.push(randomScalingFactor());
       }
-
       barChartData.datasets.push(newDataset);
       window.myBar.update();
     });
+
 
     document.getElementById('addData').addEventListener('click', function () {
       if (barChartData.datasets.length > 0) {
         var month = MONTHS[barChartData.labels.length % MONTHS.length];
         barChartData.labels.push(month);
-
         for (var index = 0; index < barChartData.datasets.length; ++index) {
           // window.myBar.addData(randomScalingFactor(), index);
           barChartData.datasets[index].data.push(randomScalingFactor());
         }
-
         window.myBar.update();
       }
     });
@@ -251,13 +242,14 @@
 
     document.getElementById('removeData').addEventListener('click', function () {
       barChartData.labels.splice(-1, 1); // remove the label first
-
       barChartData.datasets.forEach(function (dataset) {
         dataset.data.pop();
       });
 
       window.myBar.update();
     });
+
+
   </script>
 
   <!-- JavaScript (Opcional) -->
