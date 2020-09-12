@@ -1,243 +1,275 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilo_solar.css">
-    <link rel="icon" href="imagens/ícone.png">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="js/solar.js"></script>
-    <script src="js/grafico1.js"></script>
-    <script src="js/grafico2.js"></script>
-    <script src="../../../../dist/2.9.3/Chart.min.js"></script>
-	  <script src="../../utils.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/estilo_solar.css">
+  <link rel="icon" href="imagens/ícone.png">
 
-    <title>Empréstimo energia solar</title>
-    
-  </head>
-  <body>
-    
-    <header>
-      <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-transparente">
-        <div class="container">
-          <a href="index.html" class="navbar-brand"><img src="imagens/ícone.png" width="50px"></a>
-          <button class="navbar-toggler" data-toggle="collapse" data-target="#navegacao">
-            <i class="fas fa-bars text-dark"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navegacao">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a href="" class="nav-link">Ajuda</a>
-              </li>
-              <li class="nav-item">
-                <a href="emprestimo.html" class="nav-link">Empréstimos</a>
-              </li>
-              <li class="nav-item">
-                <a href="solar.html" class="nav-link">Solar</a>
-              </li>
-              <li class="nav-item divisor"></li>
-              <li class="nav-item">
-                <a href="login.html" class="nav-link">Sair</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <script src="js/solar.js"></script>
+  <script src="js/grafico1.js"></script>
+  <script src="js/grafico2.js"></script>
+  <script src="../../../../dist/2.9.3/Chart.min.js"></script>
+  <script src="../../utils.js"></script>
 
-    <section id="home">
+  <title>Empréstimo energia solar</title>
+
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-transparente">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6 d-flex">
-            <div class="align-self-center">
-              <h1 class="display-4">Invista em energia renovável!</h1>
-              <p>
-                Insire aqui o consumo médio mensal em kWh para uma estimativa dos custos dos empréstimos (válido para microgerações).
-              </p>
-              <form class="mb-4">
-                <div class="input-group input-group-lg">
-                  <input id="consumo" type="text" placeholder="Consumo em kWh" class="form-control" class="form-control">
-                </div>
-                <div class="input-group input-group-lg distancia">
-                  <input id="area_telhado" type="text" placeholder="Área do telhado" class="form-control" class="form-control">
-                </div>
-                <div class="input-group input-group-lg distancia">
-                  <button type="button" class="btn btn-lg btn-primary" onclick="dimensionamento()">Calcular</button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex d-none d-md-block"> <!-- d-none e d-md-block: img não aparecer em medium devices  -->
-            <img src="imagens/solar.jpg" class="d-none d-md-block" height="400px" width="600px">
-          </div>
+        <a href="index.html" class="navbar-brand"><img src="imagens/ícone.png" width="50px"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navegacao">
+          <i class="fas fa-bars text-dark"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navegacao">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="" class="nav-link">Ajuda</a>
+            </li>
+            <li class="nav-item">
+              <a href="emprestimo.html" class="nav-link">Empréstimos</a>
+            </li>
+            <li class="nav-item">
+              <a href="solar.html" class="nav-link">Solar</a>
+            </li>
+            <li class="nav-item divisor"></li>
+            <li class="nav-item">
+              <a href="login.html" class="nav-link">Sair</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
+    </nav>
+  </header>
 
-    <section id="home2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 d-flex">
-            <div class="align-self-center">
-              <h1 class="display-4">Já sabe quanto precisa?</h1>
-              <p>
-                Insira o valor desejado para o empréstimo.
-              </p>
-              <form class="mt-4 mb-4">         
-                <div class="dropdown btn-margin">
-                  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Opções
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a id="curto_prazo" class="dropdown-item" href="#">até 2 anos</a>
-                    <a id="medio_prazo" class="dropdown-item" href="#">até 4 anos</a>
-                    <a id="longo_prazo" class="dropdown-item" href="#">até 6 anos</a>
-                  </div>
-                </div>
-                <div class="input-group input-group-lg">
-                  <input id="dinheiro" type="text" placeholder="Quantia necessária" class="form-control" class="form-control">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-secondary" onclick="simulacao()">Simule</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex d-none d-md-block"> <!-- d-none e d-md-block: img não aparecer em medium devices  -->
-            <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
+  <section id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex">
+          <div class="align-self-center">
+            <h1 class="display-4">Invista em energia renovável!</h1>
+            <p>
+              Insire aqui o consumo médio mensal em kWh para uma estimativa dos custos dos empréstimos (válido para
+              microgerações).
+            </p>
+            <form class="mb-4">
+              <div class="input-group input-group-lg">
+                <input id="consumo" type="text" placeholder="Consumo em kWh" class="form-control" class="form-control">
+              </div>
+              <div class="input-group input-group-lg distancia">
+                <input id="area_telhado" type="text" placeholder="Área do telhado" class="form-control"
+                  class="form-control">
+              </div>
+              <div class="input-group input-group-lg distancia">
+                <button type="button" class="btn btn-lg btn-primary" onclick="dimensionamento()">Calcular</button>
+              </div>
+            </form>
           </div>
         </div>
+        <div class="col-md-6 d-flex d-none d-md-block">
+          <!-- d-none e d-md-block: img não aparecer em medium devices  -->
+          <img src="imagens/solar.jpg" class="d-none d-md-block" height="400px" width="600px">
+        </div>
       </div>
-    </section>
-
-    <div id="container" style="width: 90%; align-self: center;">
-      <canvas id="canvas" class="centralizar"></canvas>
     </div>
+  </section>
 
-    <script>
-      var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var color = Chart.helpers.color;
-      var barChartData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label: 'Dataset 1',
-          backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.red,
-          borderWidth: 1,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ]
-        }, {
-          label: 'Dataset 2',
-          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.blue,
-          borderWidth: 1,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ]
-        }]
-  
-      };
-  
-      window.onload = function() {
-        var ctx = document.getElementById('canvas').getContext('2d');
-        window.myBar = new Chart(ctx, {
-          type: 'bar',
-          data: barChartData,
-          options: {
-            responsive: true,
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: 'Chart.js Bar Chart'
-            }
+  <section class="retorno">
+    <div class="container">
+      <div class="resultado_simulacao">
+        <h1 id="resultado"></h1>
+        <p>Simule seu empréstimo abaixo</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="home2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex">
+          <div class="align-self-center">
+            <h1 class="display-4">Já sabe quanto precisa?</h1>
+            <p>
+              Insira o valor desejado para o empréstimo.
+            </p>
+            <form class="mt-4 mb-4">
+              <div class="dropdown btn-margin">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Opções
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a id="curto_prazo" class="dropdown-item" href="#" value="24">até 2 anos</a></li>
+                  <li><a id="medio_prazo" class="dropdown-item" href="#" value="48">até 4 anos</a></li>
+                  <li><a id="longo_prazo" class="dropdown-item" href="#" value="72">até 6 anos</a></li>
+                </ul>
+              </div>
+              <div class="input-group input-group-lg">
+                <input id="dinheiro" type="text" placeholder="Quantia necessária" class="form-control"
+                  class="form-control">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-secondary" onclick="simulacao()">Simule</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex d-none d-md-block">
+          <!-- d-none e d-md-block: img não aparecer em medium devices  -->
+          <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="container" style="width: 90%; align-self: center;">
+    <canvas id="canvas" class="centralizar"></canvas>
+  </div>
+
+  <script>
+    $(".dropdown-menu li a").click(function () {
+
+      $(".btn:first-child").html($(this).text() + ' <span class="caret"></span>');
+
+    });
+
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var color = Chart.helpers.color;
+    var barChartData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'Dataset 1',
+        backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.red,
+        borderWidth: 1,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }, {
+        label: 'Dataset 2',
+        backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.blue,
+        borderWidth: 1,
+        data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor()
+        ]
+      }]
+
+    };
+
+    window.onload = function () {
+      var ctx = document.getElementById('canvas').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Chart.js Bar Chart'
           }
+        }
+      });
+
+    };
+
+    document.getElementById('randomizeData').addEventListener('click', function () {
+      var zero = Math.random() < 0.2 ? true : false;
+      barChartData.datasets.forEach(function (dataset) {
+        dataset.data = dataset.data.map(function () {
+          return zero ? 0.0 : randomScalingFactor();
         });
-  
+
+      });
+      window.myBar.update();
+    });
+
+    var colorNames = Object.keys(window.chartColors);
+    document.getElementById('addDataset').addEventListener('click', function () {
+      var colorName = colorNames[barChartData.datasets.length % colorNames.length];
+      var dsColor = window.chartColors[colorName];
+      var newDataset = {
+        label: 'Dataset ' + (barChartData.datasets.length + 1),
+        backgroundColor: color(dsColor).alpha(0.5).rgbString(),
+        borderColor: dsColor,
+        borderWidth: 1,
+        data: []
       };
-  
-      document.getElementById('randomizeData').addEventListener('click', function() {
-        var zero = Math.random() < 0.2 ? true : false;
-        barChartData.datasets.forEach(function(dataset) {
-          dataset.data = dataset.data.map(function() {
-            return zero ? 0.0 : randomScalingFactor();
-          });
-  
-        });
-        window.myBar.update();
-      });
-  
-      var colorNames = Object.keys(window.chartColors);
-      document.getElementById('addDataset').addEventListener('click', function() {
-        var colorName = colorNames[barChartData.datasets.length % colorNames.length];
-        var dsColor = window.chartColors[colorName];
-        var newDataset = {
-          label: 'Dataset ' + (barChartData.datasets.length + 1),
-          backgroundColor: color(dsColor).alpha(0.5).rgbString(),
-          borderColor: dsColor,
-          borderWidth: 1,
-          data: []
-        };
-  
-        for (var index = 0; index < barChartData.labels.length; ++index) {
-          newDataset.data.push(randomScalingFactor());
+
+      for (var index = 0; index < barChartData.labels.length; ++index) {
+        newDataset.data.push(randomScalingFactor());
+      }
+
+      barChartData.datasets.push(newDataset);
+      window.myBar.update();
+    });
+
+    document.getElementById('addData').addEventListener('click', function () {
+      if (barChartData.datasets.length > 0) {
+        var month = MONTHS[barChartData.labels.length % MONTHS.length];
+        barChartData.labels.push(month);
+
+        for (var index = 0; index < barChartData.datasets.length; ++index) {
+          // window.myBar.addData(randomScalingFactor(), index);
+          barChartData.datasets[index].data.push(randomScalingFactor());
         }
-  
-        barChartData.datasets.push(newDataset);
+
         window.myBar.update();
+      }
+    });
+
+    document.getElementById('removeDataset').addEventListener('click', function () {
+      barChartData.datasets.pop();
+      window.myBar.update();
+    });
+
+    document.getElementById('removeData').addEventListener('click', function () {
+      barChartData.labels.splice(-1, 1); // remove the label first
+
+      barChartData.datasets.forEach(function (dataset) {
+        dataset.data.pop();
       });
-  
-      document.getElementById('addData').addEventListener('click', function() {
-        if (barChartData.datasets.length > 0) {
-          var month = MONTHS[barChartData.labels.length % MONTHS.length];
-          barChartData.labels.push(month);
-  
-          for (var index = 0; index < barChartData.datasets.length; ++index) {
-            // window.myBar.addData(randomScalingFactor(), index);
-            barChartData.datasets[index].data.push(randomScalingFactor());
-          }
-  
-          window.myBar.update();
-        }
-      });
-  
-      document.getElementById('removeDataset').addEventListener('click', function() {
-        barChartData.datasets.pop();
-        window.myBar.update();
-      });
-  
-      document.getElementById('removeData').addEventListener('click', function() {
-        barChartData.labels.splice(-1, 1); // remove the label first
-  
-        barChartData.datasets.forEach(function(dataset) {
-          dataset.data.pop();
-        });
-  
-        window.myBar.update();
-      });
-    </script>
-    
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+
+      window.myBar.update();
+    });
+  </script>
+
+  <!-- JavaScript (Opcional) -->
+  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
