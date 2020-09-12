@@ -10,8 +10,13 @@
     <link rel="icon" href="imagens/ícone.png">
 
     <script src="js/solar.js"></script>
+    <script src="js/grafico1.js"></script>
+    <script src="js/grafico2.js"></script>
+    <script src="../../../../dist/2.9.3/Chart.min.js"></script>
+	  <script src="../../utils.js"></script>
 
     <title>Empréstimo energia solar</title>
+    
   </head>
   <body>
     
@@ -28,7 +33,7 @@
                 <a href="" class="nav-link">Ajuda</a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">Consultar carteira</a>
+                <a href="" class="nav-link">Empréstimos</a>
               </li>
               <li class="nav-item">
                 <a href="solar.html" class="nav-link">Solar</a>
@@ -50,24 +55,174 @@
             <div class="align-self-center">
               <h1 class="display-4">Invista em energia renovável!</h1>
               <p>
-                Insire aqui o consumo médio mensal em kWh para análise de custo da proposta
+                Insire aqui o consumo médio mensal em kWh para uma estimativa dos custos dos empréstimos
               </p>
               <form class="mb-4">
                 <div class="input-group input-group-lg">
                   <input id="consumo" type="text" placeholder="Consumo em kWh" class="form-control" class="form-control">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn-primary" onclick="custoProjeto()">Calcular</button>
-                  </div>
+                </div>
+                <div class="input-group input-group-lg distancia">
+                  <input id="area_telhado" type="text" placeholder="Área do telhado" class="form-control" class="form-control">
+                </div>
+                <div class="input-group input-group-lg distancia">
+                  <button type="button" class="btn btn-primary" onclick="dimensionamento()">Calcular</button>
                 </div>
               </form>
             </div>
           </div>
           <div class="col-md-6 d-flex d-none d-md-block"> <!-- d-none e d-md-block: img não aparecer em medium devices  -->
-            <img src="imagens//solar.jpg" class="d-none d-md-block" height="400px" width="600px">
+            <img src="imagens/solar.jpg" class="d-none d-md-block" height="400px" width="600px">
           </div>
         </div>
       </div>
     </section>
+
+    <section id="home2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 d-flex">
+            <div class="align-self-center">
+              <h1 class="display-4">Já sabe quanto precisa?</h1>
+              <p>
+                Insira o valor desejado para o empréstimo.
+              </p>
+              <form class="mb-4">
+                <div class="input-group input-group-lg">
+                  <input id="emprestimo" type="text" placeholder="Valor em R$" class="form-control" class="form-control">
+                </div>
+                <div class="input-group input-group-lg distancia">
+                  <button type="button" class="btn btn-primary" onclick="custoProjeto()">Calcular</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex d-none d-md-block"> <!-- d-none e d-md-block: img não aparecer em medium devices  -->
+            <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="container" style="width: 90%; align-self: center;">
+      <canvas id="canvas" class="centralizar"></canvas>
+    </div>
+
+    <script>
+      var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var color = Chart.helpers.color;
+      var barChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+          label: 'Dataset 1',
+          backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.red,
+          borderWidth: 1,
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+          ]
+        }, {
+          label: 'Dataset 2',
+          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+          borderColor: window.chartColors.blue,
+          borderWidth: 1,
+          data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+          ]
+        }]
+  
+      };
+  
+      window.onload = function() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myBar = new Chart(ctx, {
+          type: 'bar',
+          data: barChartData,
+          options: {
+            responsive: true,
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Bar Chart'
+            }
+          }
+        });
+  
+      };
+  
+      document.getElementById('randomizeData').addEventListener('click', function() {
+        var zero = Math.random() < 0.2 ? true : false;
+        barChartData.datasets.forEach(function(dataset) {
+          dataset.data = dataset.data.map(function() {
+            return zero ? 0.0 : randomScalingFactor();
+          });
+  
+        });
+        window.myBar.update();
+      });
+  
+      var colorNames = Object.keys(window.chartColors);
+      document.getElementById('addDataset').addEventListener('click', function() {
+        var colorName = colorNames[barChartData.datasets.length % colorNames.length];
+        var dsColor = window.chartColors[colorName];
+        var newDataset = {
+          label: 'Dataset ' + (barChartData.datasets.length + 1),
+          backgroundColor: color(dsColor).alpha(0.5).rgbString(),
+          borderColor: dsColor,
+          borderWidth: 1,
+          data: []
+        };
+  
+        for (var index = 0; index < barChartData.labels.length; ++index) {
+          newDataset.data.push(randomScalingFactor());
+        }
+  
+        barChartData.datasets.push(newDataset);
+        window.myBar.update();
+      });
+  
+      document.getElementById('addData').addEventListener('click', function() {
+        if (barChartData.datasets.length > 0) {
+          var month = MONTHS[barChartData.labels.length % MONTHS.length];
+          barChartData.labels.push(month);
+  
+          for (var index = 0; index < barChartData.datasets.length; ++index) {
+            // window.myBar.addData(randomScalingFactor(), index);
+            barChartData.datasets[index].data.push(randomScalingFactor());
+          }
+  
+          window.myBar.update();
+        }
+      });
+  
+      document.getElementById('removeDataset').addEventListener('click', function() {
+        barChartData.datasets.pop();
+        window.myBar.update();
+      });
+  
+      document.getElementById('removeData').addEventListener('click', function() {
+        barChartData.labels.splice(-1, 1); // remove the label first
+  
+        barChartData.datasets.forEach(function(dataset) {
+          dataset.data.pop();
+        });
+  
+        window.myBar.update();
+      });
+    </script>
     
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
