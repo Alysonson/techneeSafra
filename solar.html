@@ -33,7 +33,7 @@
                 <a href="" class="nav-link">Ajuda</a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">Empréstimos</a>
+                <a href="emprestimo.html" class="nav-link">Empréstimos</a>
               </li>
               <li class="nav-item">
                 <a href="solar.html" class="nav-link">Solar</a>
@@ -55,7 +55,7 @@
             <div class="align-self-center">
               <h1 class="display-4">Invista em energia renovável!</h1>
               <p>
-                Insire aqui o consumo médio mensal em kWh para uma estimativa dos custos dos empréstimos
+                Insire aqui o consumo médio mensal em kWh para uma estimativa dos custos dos empréstimos (válido para microgerações).
               </p>
               <form class="mb-4">
                 <div class="input-group input-group-lg">
@@ -65,7 +65,7 @@
                   <input id="area_telhado" type="text" placeholder="Área do telhado" class="form-control" class="form-control">
                 </div>
                 <div class="input-group input-group-lg distancia">
-                  <button type="button" class="btn btn-primary" onclick="dimensionamento()">Calcular</button>
+                  <button type="button" class="btn btn-lg btn-primary" onclick="dimensionamento()">Calcular</button>
                 </div>
               </form>
             </div>
@@ -86,12 +86,22 @@
               <p>
                 Insira o valor desejado para o empréstimo.
               </p>
-              <form class="mb-4">
-                <div class="input-group input-group-lg">
-                  <input id="emprestimo" type="text" placeholder="Valor em R$" class="form-control" class="form-control">
+              <form class="mt-4 mb-4">         
+                <div class="dropdown btn-margin">
+                  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Opções
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a id="curto_prazo" class="dropdown-item" href="#">até 2 anos</a>
+                    <a id="medio_prazo" class="dropdown-item" href="#">até 4 anos</a>
+                    <a id="longo_prazo" class="dropdown-item" href="#">até 6 anos</a>
+                  </div>
                 </div>
-                <div class="input-group input-group-lg distancia">
-                  <button type="button" class="btn btn-primary" onclick="custoProjeto()">Calcular</button>
+                <div class="input-group input-group-lg">
+                  <input id="dinheiro" type="text" placeholder="Quantia necessária" class="form-control" class="form-control">
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-secondary" onclick="simulacao()">Simule</button>
+                  </div>
                 </div>
               </form>
             </div>
