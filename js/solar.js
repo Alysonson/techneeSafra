@@ -75,13 +75,8 @@ class Calculo {
         }
     }
 
-<<<<<<< HEAD
-    custoPaineis(quantidade) {
-        return quantidade * 619;
-=======
-    custoPaineis (quantidade, pct_invest) {
+    custoPaineis(quantidade, pct_invest) {
         return quantidade * 619 * pct_invest
->>>>>>> 460a670633e85d335f5c2e11f22d21ec5aff4276
     }
 
     custoMaoDeObra(quantidade) {
@@ -89,11 +84,7 @@ class Calculo {
     }
 
     custoEquipEle(preco_inversor, preco_paineis) {
-<<<<<<< HEAD
-        return (0.35 * (preco_inversor + preco_paineis));
-=======
         return (0.3 * (preco_inversor + preco_paineis))
->>>>>>> 460a670633e85d335f5c2e11f22d21ec5aff4276
     }
 
     custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele) {
@@ -151,11 +142,6 @@ function alterar3() {
 
 function simulacao() {
 
-<<<<<<< HEAD
-    var juros = 0.01;
-    var parcelas = 72;
-    var valor_monetario = parseFloat(document.getElementById("dinheiro").value);
-=======
     if (document.getElementById("curto_prazo").className == "dropdown-item active") {
         var juros = 0.008
     }
@@ -173,7 +159,6 @@ function simulacao() {
 
     var parcelas = 24
     var valor_monetario = parseFloat(document.getElementById("dinheiro").value)
->>>>>>> 460a670633e85d335f5c2e11f22d21ec5aff4276
 
     var coeficiente_financeamento = juros / (1 - ((1 + juros) ** (parcelas * -1)));
     var valor_parcela = coeficiente_financeamento * valor_monetario;
