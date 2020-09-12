@@ -75,8 +75,8 @@ class Calculo {
         }
     }
 
-    custoPaineis (quantidade, pct_invest) {
-        return (quantidade * 619 * pct_invest / 100 )
+    custoPaineis(quantidade, pct_invest) {
+        return (quantidade * 619 * pct_invest / 100)
     }
 
     custoMaoDeObra(quantidade) {
@@ -98,27 +98,42 @@ var formatter = new Intl.NumberFormat('pt-BR', {
 });
 
 function dimensionamento() {
-    var consumo = parseFloat(document.getElementById("consumo").value)
-    var area_telhado = parseFloat(document.getElementById("area_telhado").value)
-    calculo = new Calculo(consumo, area_telhado)
 
-    qtd_paineis = calculo.numeroPainel()
-    pct_invest = calculo.telhadoEspaco(qtd_paineis)
-    preco_inversor = calculo.custoInversor(qtd_paineis, pct_invest)
-    preco_paineis = calculo.custoPaineis(qtd_paineis, pct_invest)
-    mao_de_obra = calculo.custoMaoDeObra(qtd_paineis)
-    equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis)
-    custo_projeto = calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele)
+    if (document.getElementById("consumo").value == "" || document.getElementById("area_telhado").value == "") {
+        alert("Lembre de preencher a seu consumo e a área do seu telhado, pode ser aproximado");
+    } else {
+        var consumo = parseFloat(document.getElementById("consumo").value)
+        var area_telhado = parseFloat(document.getElementById("area_telhado").value)
+        calculo = new Calculo(consumo, area_telhado)
 
-    document.getElementById("resultado").innerHTML = `O seu projeto irá custar aproximadamente R$ ${formatter.format(custo_projeto)}`;
-    document.getElementById('resultado').scrollIntoView({ behavior: "smooth" });
+        qtd_paineis = calculo.numeroPainel()
+        pct_invest = calculo.telhadoEspaco(qtd_paineis)
+        preco_inversor = calculo.custoInversor(qtd_paineis, pct_invest)
+        preco_paineis = calculo.custoPaineis(qtd_paineis, pct_invest)
+        mao_de_obra = calculo.custoMaoDeObra(qtd_paineis)
+        equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis)
+        custo_projeto = calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele)
 
+        if (pct_invest == 0) {
+            document.getElementById("valor_projeto").innerHTML = "Infelizmente a área de telhado informada torna o projeto inviável";
+            document.getElementById("pct_abatimento").innerHTML = ``;
+            document.getElementById("resultado_simulacao").style.display = 'block';
+            document.getElementById('resultado_simulacao').scrollIntoView({ behavior: "smooth" });
+        } else {
 
-    document.getElementById('dinheiro').value = custo_projeto;
+            document.getElementById("valor_projeto").innerHTML = `O seu projeto irá custar aproximadamente R$ ${formatter.format(custo_projeto)}`;
+            document.getElementById("pct_abatimento").innerHTML = `Pelo tamanho do seu telhado poderemos abater até <strong>${pct_invest}%</strong> da sua conta de energia`;
 
-    return custo_projeto;
+            document.getElementById("resultado_simulacao").style.display = 'block';
+
+            document.getElementById('resultado_simulacao').scrollIntoView({ behavior: "smooth" });
+
+            document.getElementById('dinheiro').value = custo_projeto;
+
+            return custo_projeto;
+        }
+    }
 }
-
 
 function alterar1() {
     document.getElementById("curto_prazo").className = "dropdown-item active"
@@ -185,9 +200,8 @@ function simulacao() {
 
     console.log(document.getElementsByClassName("dropdown-menu").value);
 
-    console.log(valor_parcela);
-    console.log("aqui");
-    console.log(valor_financeamento);
-    console.log(tempo_retorno);
-
+    console.log(`Quanto você paga hoje: ${preco_consumo}`)
+    console.log(`Valor da parcela: ${Math.round(valor_parcela)}`);
+    console.log(`Valor financiamento: ${valor_financeamento}`);
+    console.log(`Tempo de retorno: ${Math.ceil(tempo_retorno)}`);
 }
