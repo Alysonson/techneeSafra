@@ -108,11 +108,11 @@
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Opções
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a id="curto_prazo" class="dropdown-item" href="#" value="24">até 2 anos</a></li>
-                  <li><a id="medio_prazo" class="dropdown-item" href="#" value="48">até 4 anos</a></li>
-                  <li><a id="longo_prazo" class="dropdown-item" href="#" value="72">até 6 anos</a></li>
-                </ul>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a id="curto_prazo" onclick="alterar1()" class="dropdown-item" href="#">até 2 anos</a>
+                  <a id="medio_prazo" onclick="alterar2()" class="dropdown-item" href="#">até 4 anos</a>
+                  <a id="longo_prazo" onclick="alterar3()" class="dropdown-item" href="#">até 6 anos</a>
+                </div>
               </div>
               <div class="input-group input-group-lg">
                 <input id="dinheiro" type="text" placeholder="Quantia necessária" class="form-control"
@@ -121,14 +121,15 @@
                   <button type="button" class="btn btn-secondary" onclick="simulacao()">Simule</button>
                 </div>
               </div>
-            </form>
           </div>
-        </div>
-        <div class="col-md-6 d-flex d-none d-md-block">
-          <!-- d-none e d-md-block: img não aparecer em medium devices  -->
-          <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
+          </form>
         </div>
       </div>
+      <div class="col-md-6 d-flex d-none d-md-block">
+        <!-- d-none e d-md-block: img não aparecer em medium devices  -->
+        <img src="imagens/orcamento.jpg" class="d-none d-md-block" height="400px" width="600px">
+      </div>
+    </div>
     </div>
   </section>
 
