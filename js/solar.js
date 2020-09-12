@@ -75,8 +75,8 @@ class Calculo {
         }
     }
 
-    custoPaineis (quantidade) {
-        return quantidade * 619
+    custoPaineis (quantidade, pct_invest) {
+        return quantidade * 619 * pct_invest
     }
 
     custoMaoDeObra (quantidade) {
@@ -84,7 +84,7 @@ class Calculo {
     }
 
     custoEquipEle(preco_inversor, preco_paineis) {
-        return (0.35 * (preco_inversor + preco_paineis))
+        return (0.3 * (preco_inversor + preco_paineis))
     }
 
     custoTotal (preco_inversor, preco_paineis, mao_de_obra, equip_ele) {
@@ -101,7 +101,7 @@ function dimensionamento() {
     pct_invest = calculo.telhadoEspaco(qtd_paineis)
 
     preco_inversor = calculo.custoInversor(qtd_paineis, pct_invest)
-    preco_paineis = calculo.custoPaineis(qtd_paineis)
+    preco_paineis = calculo.custoPaineis(qtd_paineis, pct_invest)
     mao_de_obra =  calculo.custoMaoDeObra(qtd_paineis)
     equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis)
     custo_projeto = calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele)
@@ -110,9 +110,35 @@ function dimensionamento() {
 }
 
 
+function alterar1() {
+    document.getElementById("curto_prazo").className = "dropdown-item active"
+}
+
+function alterar2() {
+    document.getElementById("medio_prazo").className = "dropdown-item active"
+}
+
+function alterar3() {
+    document.getElementById("longo_prazo").className = "dropdown-item active"
+}
+
 function simulacao() {
 
-    var juros = 0.01
+    if (document.getElementById("curto_prazo").className == "dropdown-item active") {
+        var juros = 0.008
+    }
+    else if (document.getElementById("medio_prazo").className == "dropdown-item active") {
+        var juros = 0.01
+    }
+    else if (document.getElementById("longo_prazo").className == "dropdown-item active") {
+        var juros = 0.012
+    }
+    else {
+        alert("Você não escolheu uma opção de tempo de empréstimo, será mostrado automaticmante a de 2 anos")
+        var juros = 0.008
+        
+    }
+
     var parcelas = 24
     var valor_monetario = parseFloat(document.getElementById("dinheiro").value)
 
