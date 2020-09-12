@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/estilo_emprestimo.css">
     <link rel="icon" href="imagens/ícone.png">
 
+    <script src="js/emprestimo.js"></script>
+
     <title>Consulta carteira</title>
   </head>
   <body>
@@ -48,36 +50,35 @@
               <div class="row">
                 <div class="col-md-6 d-flex">
                   <div class="align-self-center">
-                    <h1 class="display-4">Escolha seu empréstimo</h1>
+                    <h1 class="display-4">Empréstimos para pessoa física</h1>
                     <p>
-                      Simule as opções disponíveis para solicitar seu dinheiro!
+                      Linhas de empréstimos financeiros com diversos prazos de pagamento!
                     </p>
                     <form class="mt-4 mb-4">
                       <div class="dropdown btn-margin">
-                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="modalidade" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Modalidade
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Modalidade 1</a>
-                          <a class="dropdown-item" href="#">Modalidade 2</a>
-                          <a class="dropdown-item" href="#">Modalidade 3</a>
+                          <a id="pessoal" onclick="alterar1()" class="dropdown-item" href="#">Pessoal</a>
+                          <a id="imovel" onclick="alterar2()" class="dropdown-item" href="#">Imobiliário</a>
                         </div>
                       </div>
                 
                       <div class="dropdown btn-margin">
-                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="opcoes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Opções
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Curto Prazo</a>
-                          <a class="dropdown-item" href="#">Médio Prazo</a>
-                          <a class="dropdown-item" href="#">Longo Prazo</a>
+                          <a id="curto_prazo" class="dropdown-item" onclick="alterar3()" href="#">Curto Prazo</a>
+                          <a id="medio_prazo" class="dropdown-item" onclick="alterar4()" href="#">Médio Prazo</a>
+                          <a id="longo_prazo" class="dropdown-item" onclick="alterar5()" ref="#">Longo Prazo</a>
                         </div>
                       </div>
                       <div class="input-group input-group-lg">
-                        <input type="text" placeholder="Quantia necessária" class="form-control" class="form-control">
+                        <input id="quantia" type="text" placeholder="Quantia necessária" class="form-control" class="form-control">
                         <div class="input-group-append">
-                          <button type="button" class="btn btn-secondary">Simule</button>
+                          <button id="dinheiro" onclick="simulacao()" type="button" class="btn btn-lg btn-secondary">Simule</button>
                         </div>
                       </div>
                     </form>
