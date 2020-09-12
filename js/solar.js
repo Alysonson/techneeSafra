@@ -76,7 +76,7 @@ class Calculo {
     }
 
     custoPaineis (quantidade, pct_invest) {
-        return quantidade * 619 * pct_invest
+        return (quantidade * 619 * pct_invest / 100 )
     }
 
     custoMaoDeObra (quantidade) {
@@ -93,9 +93,9 @@ class Calculo {
 }
 
 function dimensionamento() {
-    var Consumo = parseFloat(document.getElementById("consumo").value)
-    var Area_telhado = parseFloat(document.getElementById("area_telhado").value)
-    calculo = new Calculo(Consumo, Area_telhado)
+    var consumo = parseFloat(document.getElementById("consumo").value)
+    var area_telhado = parseFloat(document.getElementById("area_telhado").value)
+    calculo = new Calculo(consumo, area_telhado)
 
     qtd_paineis = calculo.numeroPainel()
     pct_invest = calculo.telhadoEspaco(qtd_paineis)
@@ -105,6 +105,7 @@ function dimensionamento() {
     mao_de_obra =  calculo.custoMaoDeObra(qtd_paineis)
     equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis)
     custo_projeto = calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele)
+     console.log(custo_projeto)
 
     return custo_projeto
 }
@@ -112,34 +113,38 @@ function dimensionamento() {
 
 function alterar1() {
     document.getElementById("curto_prazo").className = "dropdown-item active"
+    document.getElementById("opcoes").innerHTML = "até 2 anos"
 }
 
 function alterar2() {
     document.getElementById("medio_prazo").className = "dropdown-item active"
+    document.getElementById("opcoes").innerHTML = "até 4 anos"
 }
 
 function alterar3() {
     document.getElementById("longo_prazo").className = "dropdown-item active"
+    document.getElementById("opcoes").innerHTML = "até 6 anos"
 }
 
 function simulacao() {
 
     if (document.getElementById("curto_prazo").className == "dropdown-item active") {
         var juros = 0.008
+        var parcelas = 24
     }
     else if (document.getElementById("medio_prazo").className == "dropdown-item active") {
         var juros = 0.01
+        var parcelas = 48
     }
     else if (document.getElementById("longo_prazo").className == "dropdown-item active") {
         var juros = 0.012
+        var parcelas = 72
     }
     else {
         alert("Você não escolheu uma opção de tempo de empréstimo, será mostrado automaticmante a de 2 anos")
         var juros = 0.008
-        
     }
 
-    var parcelas = 24
     var valor_monetario = parseFloat(document.getElementById("dinheiro").value)
 
     var coeficiente_financeamento = juros / (1-((1+juros)**(parcelas*-1)))
