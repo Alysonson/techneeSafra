@@ -20,9 +20,13 @@ body {
     color: #7a7a7a;
 }
 
+p {
+    font-size: 20px
+}
+
 nav.navbar-transparente {
     padding: 15px 0px;
-    background: rgba(171, 197, 177, 0.8);
+    background: #f2f5f6
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -45,6 +49,11 @@ nav.navbar-transparente {
 }
 .distancia {
     padding-top: 10px;
+}
+
+.distancia button {
+    background: #00003C;
+    border-color: #00003C
 }
 
 .texto_importante {
@@ -73,6 +82,11 @@ form {
 .resultado_final {
     margin-top: 50px;
 }
-/*.retorno {
-    display:none
-}*/
+
+.resultado_info {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
