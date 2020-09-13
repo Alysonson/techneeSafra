@@ -5,15 +5,15 @@ Este documento tem como objetivo apresentar as funcionalidades da aplicação we
 
 ## Funcionalidades
 ### Plataforma Web (Js, HTML, CSS)
-A plataforma conta com o front-end feito em javascript, HTML, CSS e BootStrap. Temos a páginas:
- * Inicial (index)
- * Login (x)
+A plataforma conta com o front-end feito em javascript, HTML5, CSS3 e BootStrap. Temos a páginas:
+ * Inicial 
+ * Login
  * Informações sobre o produto com linhas de crédito para energia solar
  * Cálculo e demonstração do crédito em energia solar (vantagens)
  * Redirecionamento para página com chatbot que guiará o usuário para solicitação do crédito
 
 ### ChatBot (Dialogflow)
-O chatbot recebe informações do usuário para realizar a solicitação de crédito.
+O chatbot recebe informações do usuário para realizar a solicitação de crédito. Depois, o backend irá receber as informações do bot e enviá-las para o banco local.
 
 ### Banco de dados (MySql em container Docker)
 Banco de dados local para receber as informações do chatbot e gravá-las.
