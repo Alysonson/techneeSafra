@@ -46,4 +46,7 @@ Após verificar as informações, dar continuidade ao pedido de crédito, que gu
 
 ## Melhorias na implementação
 Identificamos melhorias na implementação do protótipo, listadas abaixo.
-*
+* Deploy do código node.js e do banco de dados para uma plataforma como a ***Heroku***. Dessa maneira, a ferramenta não será implementada no servidor local, mas sim público.
+* Após o deploy, inserir a URL pública do Heroku no dialogflow, fazendo com que não seja necessário utilizar o ***ngrok***
+* Implementação de mais funcionalidades para o bot, tais como: recebimento de arquivos anexados e envio de e-mail de confirmação para o usuário.
+* Implementação de componentes que permitam acessibilidade. No bot, por exemplo, recebimento de áudio e transcrição. 
