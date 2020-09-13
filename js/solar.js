@@ -98,12 +98,19 @@ var formatter = new Intl.NumberFormat('pt-BR', {
 });
 
 function dimensionamento() {
+    /* 
+        Realiza o cálculo do projeto, através dos inputs consumo e area_telhado. 
+    */
 
     if (document.getElementById("consumo").value == "" || document.getElementById("area_telhado").value == "") {
         alert("Lembre de preencher a seu consumo e a área do seu telhado, pode ser aproximado");
     } else {
+
+        // Valores de entrada
         var consumo = parseFloat(document.getElementById("consumo").value)
         var area_telhado = parseFloat(document.getElementById("area_telhado").value)
+
+        // Calculando através da classe calculo
         calculo = new Calculo(consumo, area_telhado)
 
         qtd_paineis = calculo.numeroPainel()
@@ -114,6 +121,7 @@ function dimensionamento() {
         equip_ele = calculo.custoEquipEle(preco_inversor, preco_paineis)
         custo_projeto = calculo.custoTotal(preco_inversor, preco_paineis, mao_de_obra, equip_ele)
 
+        // Retornos para o usuário
         if (pct_invest == 0) {
             document.getElementById("valor_projeto").innerHTML = "Infelizmente a área de telhado informada torna o projeto inviável";
             document.getElementById("pct_abatimento").innerHTML = ``;
@@ -150,8 +158,20 @@ function alterar(id) {
         document.getElementById("opcoes").innerHTML = "até 6 anos"
     }
 }
-    
-function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento) {
+
+function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento, juros) {
+    /*
+        A função cria o gráfico, como tabém mostra as informações principais ao usuário como:
+            - consumo atual
+            - valor parcela
+            - juros
+            - tempo de retorno
+            - resultado em 15 anos
+            - torna o safrinha visível
+    */
+
+
+    // Gráfico
     const dados = []
     let devendo = valor_financeamento * -1;
     for (let i = 0; i < 15; i++) {
@@ -188,17 +208,29 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
             }
         }
     })
+
+    // Display de informações
     document.getElementById("consumo_atual").innerHTML = `Seu consumo atual é próximo <strong>${formatter.format(preco_consumo)}</strong>`;
     document.getElementById("valor_parcela").innerHTML = `Sua parcela será de <strong>${formatter.format(Math.round(valor_parcela).toFixed(2))}</strong>`;
+    document.getElementById("valor_juros").innerHTML = `Sua taxa de juros ´será de <strong>${juros * 100}% a.m.</strong>`;
     document.getElementById("tempo_retorno").innerHTML = `Seu projeto se pagará em <strong>${Math.ceil(tempo_retorno)}</strong> meses`;
     document.getElementById("potencial").innerHTML = `Em 15 anos você poderá economizar <strong>${formatter.format(Math.ceil(devendo))}</strong>`;
-    document.getElementById("fale_safrinha").innerHTML = "Fale com o Safrinha, nosso assistente virtual, ele vai facilitar tudo pra você, só clicar no robozinho";
+    document.getElementById("fale_safrinha").innerHTML = "Fale com o <strong>Safrinha</strong>, nosso assistente virtual, ele vai facilitar tudo pra você, só clicar no robozinho";
+
+    // Torna o safrinha visível
     document.getElementById("safrinha").style.display = 'block';
-    document.getElementById('resultado_final').scrollIntoView({ behavior: "smooth" });
+
+    document.getElementsByClassName('resultado_final').scrollIntoView({ behavior: "smooth" });
 }
 
 function simulacao() {
+    /* 
+        A função realiza o processo de cálculo do investimento(juros, parcelas), 
+        chama a função resultado para montagem do gráfico e mostrar as informações
+    */
 
+
+    // Definindo juros e número de parcelas
     if (document.getElementById("curto_prazo").className == "dropdown-item active") {
         var juros = 0.008
         var parcelas = 24
@@ -238,9 +270,7 @@ function simulacao() {
     var preco_consumo = 0.9 * consumo_regular * parte_usada;
     var tempo_retorno = valor_financeamento / preco_consumo;
 
-    resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento);
-    console.log(`Quanto você paga hoje: ${preco_consumo}`)
-    console.log(`Valor da parcela: ${Math.round(valor_parcela)}`);
-    console.log(`Valor financiamento: ${valor_financeamento}`);
-    console.log(`Tempo de retorno: ${Math.ceil(tempo_retorno)}`);
+    // Função resultado
+    resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento, juros);
+
 }
