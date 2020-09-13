@@ -80,13 +80,26 @@ h3 {
     color: white;
 }
 
-.btn-vermelho {
+.btn-amarelo {
     background: #ffc107;
 }
 
-.btn-vermelho:hover {
+.btn-amarelo:hover {
     background-color: #ffc107;
     color: white;
+}
+
+.btn-verde {
+    background: #0be70b;
+}
+
+.btn-verde:hover {
+    background-color: #0be70b;
+    color: white;
+}
+
+.green {
+    color: #219221;
 }
 
 @media (max-width: 575.98px) {
