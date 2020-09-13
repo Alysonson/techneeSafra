@@ -22,3 +22,14 @@ Banco de dados local para receber as informações do chatbot e gravá-las.
 Integra as partes da aplicação. Conecta com o bot do dialogflow. Recebe as informações que o usuário digita como resposta no bot.
 Envia as informações das variáveis para o banco local.
 
+## Intruções de uso em servidor local
+Após baixar a pasta contendo as aplicações em node.js, o banco de dados e as páginas web, seguir os passos abaixo.
+
+## Compilando app.js no prompt de comando
+Compilar a aplicação principal app.js utilizando ***node app.js*** no prompt de comando do windows.
+
+### DialogFlow
+O Google Dialogflow é uma plataforma de entendimento de linguagem natural. É utilizada para o desenvolvimento de aplicações que contam com um usuário conversacional, o chatbot. Pode ser utilizada em plataformas web, android, entre outros.
+
+
+
