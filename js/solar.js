@@ -121,7 +121,7 @@ function dimensionamento() {
             document.getElementById('resultado_simulacao').scrollIntoView({ behavior: "smooth" });
         } else {
 
-            document.getElementById("valor_projeto").innerHTML = `O seu projeto irá custar aproximadamente R$ ${formatter.format(custo_projeto)}`;
+            document.getElementById("valor_projeto").innerHTML = `O seu projeto irá custar aproximadamente ${formatter.format(custo_projeto)}`;
             document.getElementById("pct_abatimento").innerHTML = `Pelo tamanho do seu telhado poderemos abater até <strong>${pct_invest}%</strong> da sua conta de energia`;
 
             document.getElementById("resultado_simulacao").style.display = 'block';

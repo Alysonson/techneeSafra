@@ -3,16 +3,6 @@ html, body, #home {
     overflow-x: hidden; /* esconder a barra horizontal da pagina web*/
 }
 
-#home {
-    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8); 
-    padding-top: 100px;
-}
-
-#home2 {
-    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
-    padding-bottom: 100px;
-}
-
 body {
     /* background: rgba(171, 197, 177, 0.8); */
     background-attachment: fixed;
@@ -24,6 +14,18 @@ p {
     font-size: 20px
 }
 
+.texto_importante {
+    color: #00003C !important;
+}
+
+.imagem {
+    border-radius: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* NAV */
 nav.navbar-transparente {
     padding: 15px 0px;
     background: #f2f5f6
@@ -47,6 +49,13 @@ nav.navbar-transparente {
     background: black;
     margin: 12px 15px;
 }
+
+/* home */
+#home {
+    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8); 
+    padding-top: 100px;
+}
+
 .distancia {
     padding-top: 10px;
 }
@@ -56,8 +65,18 @@ nav.navbar-transparente {
     border-color: #00003C
 }
 
-.texto_importante {
-    color: #00003C !important;
+/* RESULTADO SIMULACAO */
+.resultado_simulacao {
+    padding-top: 100px;
+    display: none;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+/* home2 */
+#home2 {
+    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
+    margin-bottom: 100px;
 }
 
 form {
@@ -69,16 +88,7 @@ form {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.resultado_simulacao {
-    padding-top: 100px;
-    display: none;
-    text-align: center;
-    margin-bottom: 100px;
-}
-
-.imagem {
-    border-radius: 20px;
-}
+/* RESULTADO FINAL */
 .resultado_final {
     margin-top: 50px;
 }
