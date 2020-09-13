@@ -120,45 +120,37 @@ function dimensionamento() {
             document.getElementById("resultado_simulacao").style.display = 'block';
             document.getElementById('resultado_simulacao').scrollIntoView({ behavior: "smooth" });
         } else {
-
             document.getElementById("valor_projeto").innerHTML = `O seu projeto irá custar aproximadamente ${formatter.format(custo_projeto)}`;
-            document.getElementById("pct_abatimento").innerHTML = `Pelo tamanho do seu telhado poderemos abater até <strong>${pct_invest}%</strong> da sua conta de energia`;
-
+            document.getElementById("pct_abatimento").innerHTML = `Pelo tamanho do seu telhado é possível produzir energia que cobriria <strong>${pct_invest}%</strong> da sua conta de energia`;
             document.getElementById("resultado_simulacao").style.display = 'block';
-
             document.getElementById('resultado_simulacao').scrollIntoView({ behavior: "smooth" });
-
             document.getElementById('dinheiro').value = custo_projeto;
-
-
         }
-
     }
-
     return custo_projeto;
 }
 
-function alterar1() {
-    document.getElementById("curto_prazo").className = "dropdown-item active"
-    document.getElementById("medio_prazo").className = "dropdown-item"
-    document.getElementById("longo_prazo").className = "dropdown-item"
-    document.getElementById("opcoes").innerHTML = "até 2 anos"
+function alterar(id) {
+    if (id == "curto_prazo") {
+        document.getElementById("curto_prazo").className = "dropdown-item active"
+        document.getElementById("medio_prazo").className = "dropdown-item"
+        document.getElementById("longo_prazo").className = "dropdown-item"
+        document.getElementById("opcoes").innerHTML = "até 2 anos"
+    }
+    else if (id == "medio_prazo") {
+        document.getElementById("curto_prazo").className = "dropdown-item"
+        document.getElementById("medio_prazo").className = "dropdown-item active"
+        document.getElementById("longo_prazo").className = "dropdown-item"
+        document.getElementById("opcoes").innerHTML = "até 4 anos"
+    }
+    else if (id == "longo_prazo") {
+        document.getElementById("curto_prazo").className = "dropdown-item"
+        document.getElementById("medio_prazo").className = "dropdown-item"
+        document.getElementById("longo_prazo").className = "dropdown-item active"
+        document.getElementById("opcoes").innerHTML = "até 6 anos"
+    }
 }
-
-function alterar2() {
-    document.getElementById("curto_prazo").className = "dropdown-item"
-    document.getElementById("medio_prazo").className = "dropdown-item active"
-    document.getElementById("longo_prazo").className = "dropdown-item"
-    document.getElementById("opcoes").innerHTML = "até 4 anos"
-}
-
-function alterar3() {
-    document.getElementById("curto_prazo").className = "dropdown-item"
-    document.getElementById("medio_prazo").className = "dropdown-item"
-    document.getElementById("longo_prazo").className = "dropdown-item active"
-    document.getElementById("opcoes").innerHTML = "até 6 anos"
-}
-
+    
 function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento) {
     const dados = []
     let devendo = valor_financeamento * -1;
@@ -196,17 +188,13 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
             }
         }
     })
-
-    document.getElementById("consumo_atual").innerHTML = `Seu consumo atual é de <strong>${formatter.format(preco_consumo)}</strong>`;
+    document.getElementById("consumo_atual").innerHTML = `Seu consumo atual é próximo <strong>${formatter.format(preco_consumo)}</strong>`;
     document.getElementById("valor_parcela").innerHTML = `Sua parcela será de <strong>${formatter.format(Math.round(valor_parcela).toFixed(2))}</strong>`;
     document.getElementById("tempo_retorno").innerHTML = `Seu projeto se pagará em <strong>${Math.ceil(tempo_retorno)}</strong> meses`;
-    document.getElementById("potencial").innerHTML = `Em 15 anos você economizará <strong>${formatter.format(Math.ceil(devendo))}</strong>`;
+    document.getElementById("potencial").innerHTML = `Em 15 anos você poderá economizar <strong>${formatter.format(Math.ceil(devendo))}</strong>`;
     document.getElementById("fale_safrinha").innerHTML = "Fale com o Safrinha, nosso assistente virtual, ele vai facilitar tudo pra você, só clicar no robozinho";
-
     document.getElementById("safrinha").style.display = 'block';
-
     document.getElementById('resultado_final').scrollIntoView({ behavior: "smooth" });
-
 }
 
 function simulacao() {
@@ -248,15 +236,11 @@ function simulacao() {
     }
 
     var preco_consumo = 0.9 * consumo_regular * parte_usada;
-
     var tempo_retorno = valor_financeamento / preco_consumo;
 
     resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento);
-
     console.log(`Quanto você paga hoje: ${preco_consumo}`)
     console.log(`Valor da parcela: ${Math.round(valor_parcela)}`);
     console.log(`Valor financiamento: ${valor_financeamento}`);
     console.log(`Tempo de retorno: ${Math.ceil(tempo_retorno)}`);
-
-
 }
