@@ -4,7 +4,7 @@ html, body, #home {
 }
 
 #home {
-    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
+    background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8); 
     padding-top: 100px;
 }
 
@@ -14,9 +14,10 @@ html, body, #home {
 }
 
 body {
-    background: rgba(171, 197, 177, 0.8);
+    /* background: rgba(171, 197, 177, 0.8); */
     background-attachment: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Slab',"Segoe UI","Helvetica Neue",Arial,"Noto Sans",serif;
+    color: #7a7a7a;
 }
 
 nav.navbar-transparente {
@@ -42,16 +43,36 @@ nav.navbar-transparente {
     background: black;
     margin: 12px 15px;
 }
+.distancia {
+    padding-top: 10px;
+}
+
+.texto_importante {
+    color: #00003C !important;
+}
 
 form {
     max-width:400px;
-}
-
-.distancia {
-    padding-top: 10px;
 }
 
 .caixa {
     padding: 60px 0;
     border-bottom: 1px solid #e5e5e5;
 }
+
+.resultado_simulacao {
+    padding-top: 100px;
+    display: none;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.imagem {
+    border-radius: 20px;
+}
+.resultado_final {
+    margin-top: 50px;
+}
+/*.retorno {
+    display:none
+}*/
