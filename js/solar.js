@@ -130,9 +130,12 @@ function dimensionamento() {
 
             document.getElementById('dinheiro').value = custo_projeto;
 
-            return custo_projeto;
+
         }
+
     }
+
+    return custo_projeto;
 }
 
 function alterar1() {
@@ -154,6 +157,60 @@ function alterar3() {
     document.getElementById("medio_prazo").className = "dropdown-item"
     document.getElementById("longo_prazo").className = "dropdown-item active"
     document.getElementById("opcoes").innerHTML = "até 6 anos"
+}
+
+function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento) {
+    const dados = []
+    let devendo = valor_financeamento * -1;
+    for (let i = 0; i < 15; i++) {
+        devendo += preco_consumo * 12;
+        dados.push(devendo);
+    }
+    var ctx = document.getElementById("myChart");
+
+    var chartGraph = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['ano 1', 'ano 2', 'ano 3', 'ano 4', 'ano 5', 'ano 6', 'ano 7', 'ano 8', 'ano 9', 'ano 10',
+                'ano 11', 'ano 12', 'ano 13', 'ano 14', 'ano 15'],
+            datasets: [{
+                label: "Economia no gasto de energia anual",
+                data: dados,
+                borderWidth: 5,
+                borderColor: 'rgba(77,166,253,0.85)',
+                barckgroundColor: 'transparent',
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }]
+            }
+        }
+    })
+
+    document.getElementById("consumo_atual").innerHTML = `Seu consumo atual é de ${formatter.format(preco_consumo)}`;
+    document.getElementById("valor_parcela").innerHTML = `Sua parcela será de ${formatter.format(Math.round(valor_parcela).toFixed(2))}`;
+    document.getElementById("tempo_retorno").innerHTML = `Seu projeto se pagará em ${formatter.format(Math.ceil(tempo_retorno))}`;
+    document.getElementById("potencial").innerHTML = `Em 15 anos você economizará ${formatter.format(Math.ceil(devendo))}`;
+
+    var colorChangeValue = 0;
+
+    var dataset = chartGraph.data.datasets[0];
+    for (var i = 0; i < dataset.data.length; i++) {
+        if (dataset.data[i] > colorChangeValue) {
+            dataset.backgroundColor[i] = chartColors.red;
+        }
+    }
+    chartGraph.update();
 }
 
 function simulacao() {
@@ -198,10 +255,12 @@ function simulacao() {
 
     var tempo_retorno = valor_financeamento / preco_consumo;
 
-    console.log(document.getElementsByClassName("dropdown-menu").value);
+    resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeamento);
 
     console.log(`Quanto você paga hoje: ${preco_consumo}`)
     console.log(`Valor da parcela: ${Math.round(valor_parcela)}`);
     console.log(`Valor financiamento: ${valor_financeamento}`);
     console.log(`Tempo de retorno: ${Math.ceil(tempo_retorno)}`);
+
+
 }
