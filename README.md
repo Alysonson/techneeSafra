@@ -15,7 +15,7 @@ A plataforma conta com o front-end feito em javascript, HTML, CSS e BootStrap. T
 ### ChatBot (Dialogflow)
 O chatbot recebe informações do usuário para realizar a solicitação de crédito.
 
-### Banco de dados (MySql e Docker)
+### Banco de dados (MySql em container Docker)
 Banco de dados local para receber as informações do chatbot e gravá-las.
 
 ### BackEnd (Node.js)
@@ -24,6 +24,15 @@ Envia as informações das variáveis para o banco local.
 
 ## Intruções de uso em servidor local
 Após baixar a pasta contendo as aplicações em node.js, o banco de dados e as páginas web, seguir os passos abaixo.
+
+### Configurando o docker
+Nesta aplicação, utilizamos MySql em container docker, imagem docker do MySql 5.7. Para configurar no ambiente local:
+* Instale docker e docker-compose.
+* Pelo terminal, vá até a pasta onde está o arquivo docker-compose.yml.
+* No mesmo terminal execute o comando: docker-compose up -d
+  * Isso irá fazer o container rodar em background
+  * Caso ainda não possua a imagem do mysql, ela será baixada e então o container executado
+* Após finalizar execute o comando: docker container ls. Se for exibido uma linha com um container chamado mysql_dev o mesmo estará rodando.
 
 ### Compilando app.js no prompt de comando
 Compilar a aplicação principal app.js utilizando ***node app.js*** no prompt de comando do windows. O webhook irá rodar na porta 8000, enquanto a aplicação estiver em uso.
