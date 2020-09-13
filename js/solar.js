@@ -164,11 +164,11 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
     let devendo = valor_financeamento * -1;
     for (let i = 0; i < 15; i++) {
         devendo += preco_consumo * 12;
-        dados.push(devendo);
+        dados.push(Math.ceil(devendo));
     }
     var ctx = document.getElementById("myChart");
 
-    var chartGraph = new Chart(ctx, {
+    var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['ano 1', 'ano 2', 'ano 3', 'ano 4', 'ano 5', 'ano 6', 'ano 7', 'ano 8', 'ano 9', 'ano 10',
@@ -176,9 +176,9 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
             datasets: [{
                 label: "Economia no gasto de energia anual",
                 data: dados,
-                borderWidth: 5,
+                borderWidth: 0,
                 borderColor: 'rgba(77,166,253,0.85)',
-                barckgroundColor: 'transparent',
+                backgroundColor: '#082ae931',
             }]
         },
         options: {
@@ -197,20 +197,12 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
         }
     })
 
-    document.getElementById("consumo_atual").innerHTML = `Seu consumo atual é de ${formatter.format(preco_consumo)}`;
-    document.getElementById("valor_parcela").innerHTML = `Sua parcela será de ${formatter.format(Math.round(valor_parcela).toFixed(2))}`;
-    document.getElementById("tempo_retorno").innerHTML = `Seu projeto se pagará em ${formatter.format(Math.ceil(tempo_retorno))}`;
-    document.getElementById("potencial").innerHTML = `Em 15 anos você economizará ${formatter.format(Math.ceil(devendo))}`;
+    document.getElementById("consumo_atual").innerHTML = `Seu consumo atual é de <strong>${formatter.format(preco_consumo)}</strong>`;
+    document.getElementById("valor_parcela").innerHTML = `Sua parcela será de <strong>${formatter.format(Math.round(valor_parcela).toFixed(2))}</strong>`;
+    document.getElementById("tempo_retorno").innerHTML = `Seu projeto se pagará em <strong>${Math.ceil(tempo_retorno)}</strong> meses`;
+    document.getElementById("potencial").innerHTML = `Em 15 anos você economizará <strong>${formatter.format(Math.ceil(devendo))}</strong>`;
 
-    var colorChangeValue = 0;
 
-    var dataset = chartGraph.data.datasets[0];
-    for (var i = 0; i < dataset.data.length; i++) {
-        if (dataset.data[i] > colorChangeValue) {
-            dataset.backgroundColor[i] = chartColors.red;
-        }
-    }
-    chartGraph.update();
 }
 
 function simulacao() {
