@@ -26,10 +26,18 @@ Envia as informações das variáveis para o banco local.
 Após baixar a pasta contendo as aplicações em node.js, o banco de dados e as páginas web, seguir os passos abaixo.
 
 ### Compilando app.js no prompt de comando
-Compilar a aplicação principal app.js utilizando ***node app.js*** no prompt de comando do windows.
+Compilar a aplicação principal app.js utilizando ***node app.js*** no prompt de comando do windows. O webhook irá rodar na porta 8000, enquanto a aplicação estiver em uso.
+
+### Utilizando o ngrok
+O ngrok criará uma URL pública para acessar nosso localhost. Dessa forma, podemos inserir essa URL no DialogFlow do Google, local onde está hospedado nosso chatbot.
+Dessa forma, conseguiremos acessar o bot através do nosso backend, extraindo as variáveis que são capturadas pelo bot ao conversar com o usuário.
+É necessário baixar o ngrok: [ngrok website](https://ngrok.com/).
+Após baixar, acessar a pasta em que o .exe encontra-se. No prompt de comando inserir ***ngrok http 8000***.
+Copiar a URL gerada pelo ngrok (a URL em https, última). Esta página ficará aberta para mostrar os status de ***POST*** do bot e para manter o token atual do ngrok.
 
 ### DialogFlow
 O Google Dialogflow é uma plataforma de entendimento de linguagem natural. É utilizada para o desenvolvimento de aplicações que contam com um usuário conversacional, o chatbot. Pode ser utilizada em plataformas web, android, entre outros.
+Após a criação e hospedagem do nosso chatbot, acessar a página de fulfillment.
 
 
 
