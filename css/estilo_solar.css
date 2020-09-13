@@ -70,6 +70,9 @@ form {
 .imagem {
     border-radius: 20px;
 }
+.resultado_final {
+    margin-top: 50px;
+}
 /*.retorno {
     display:none
 }*/
