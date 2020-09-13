@@ -1,0 +1,7 @@
+1. Tenha o docker e docker-compose instalados
+2. Pelo terminal, vá até a pasta onde está o arquivo docker-compose.yml
+3. No mesmo terminal execute o comando: docker-compose up -d
+    3.1 Isso irá fazer o container rodar em background
+    3.2 Caso ainda não possua a imagem do mysql, ela será baixada e então o container executado
+4. Após finalizar execute o comando: docker container ls
+    4.1 Se for exibido uma linha com um container chamado mysql_dev o mesmo estará rodando
