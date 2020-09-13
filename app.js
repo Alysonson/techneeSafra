@@ -26,19 +26,7 @@ app.use(body_parser.json());
 
 app.post('/webhook/', function (req, res) {
     content = req.body
-
-    //Cria o header do arquivo .csv e o nome do arquivo
-    /*createCsvWriter = require('csv-writer').createObjectCsvWriter;
-    csv_writer = createCsvWriter({
-      path: 'file.csv',
-      header: [
-        {id: 'user_cpf', title: 'User CPF'},
-        {id: 'user_salary', title: 'User Salary'},
-        {id: 'user_credit', title: 'User Credit'},
-        {id: 'user_email', title: 'User Email'},        
-      ],
-      append : true
-    });*/
+    
 
 //Cria variáveis para obter informações do bot do dialogflow
     data = [
@@ -74,10 +62,6 @@ app.post('/webhook/', function (req, res) {
     
     });
 
-    /*csv_writer
-      .writeRecords(data)
-      .then(()=> console.log('The CSV file was written successfully'));*/
-
 // Finalização do processo, resposta ao bot
     response =  {
       "fulfillmentText": "Seus dados foram processados com sucesso! Em breve você receberá um retorno de sua solicitação. Obrigada pela confiança! :)"
@@ -85,7 +69,6 @@ app.post('/webhook/', function (req, res) {
   
     res.send(response);
 });
-
 
 // Captura os requests
 app.listen(port, function () {
