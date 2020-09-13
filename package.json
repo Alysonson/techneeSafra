@@ -10,7 +10,7 @@
     "dialogflow",
     "node.js"
   ],
-  "author": "aitude",
+  "author": "melissasoledade, alansousaj",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
