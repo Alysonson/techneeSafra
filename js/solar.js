@@ -220,7 +220,7 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
     // Torna o safrinha visível
     document.getElementById("safrinha").style.display = 'block';
 
-    document.getElementsByClassName('resultado_final').scrollIntoView({ behavior: "smooth" });
+    document.getElementById("final").scrollIntoView({ behavior: "smooth" });
 }
 
 function simulacao() {
