@@ -53,7 +53,8 @@ nav.navbar-transparente {
 /* home */
 #home {
     background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8); 
-    padding-top: 100px;
+    padding-top: 50px;
+    margin: 50px;
 }
 
 .distancia {
@@ -63,6 +64,20 @@ nav.navbar-transparente {
 .distancia button {
     background: #00003C;
     border-color: #00003C
+}
+
+.texto_info_1 {
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+.texto_info_1 p {
+    font-size: 2rem !important;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 1px solid black;
 }
 
 /* RESULTADO SIMULACAO */
@@ -77,6 +92,7 @@ nav.navbar-transparente {
 #home2 {
     background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
     margin-bottom: 100px;
+    margin: 50px;
 }
 
 form {
