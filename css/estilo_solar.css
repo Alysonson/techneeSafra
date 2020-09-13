@@ -100,3 +100,8 @@ form {
     justify-content: center;
     flex-direction: column;
 }
+
+/* SAFRINHA */
+#safrinha {
+    display: none;
+}

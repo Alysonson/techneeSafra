@@ -201,7 +201,11 @@ function resultado(preco_consumo, valor_parcela, tempo_retorno, valor_financeame
     document.getElementById("valor_parcela").innerHTML = `Sua parcela será de <strong>${formatter.format(Math.round(valor_parcela).toFixed(2))}</strong>`;
     document.getElementById("tempo_retorno").innerHTML = `Seu projeto se pagará em <strong>${Math.ceil(tempo_retorno)}</strong> meses`;
     document.getElementById("potencial").innerHTML = `Em 15 anos você economizará <strong>${formatter.format(Math.ceil(devendo))}</strong>`;
+    document.getElementById("fale_safrinha").innerHTML = "Fale com o Safrinha, nosso assistente virtual, ele vai facilitar tudo pra você, só clicar no robozinho";
 
+    document.getElementById("safrinha").style.display = 'block';
+
+    document.getElementById('resultado_final').scrollIntoView({ behavior: "smooth" });
 
 }
 
