@@ -25,7 +25,7 @@ Envia as informações das variáveis para o banco local.
 ## Intruções de uso em servidor local
 Após baixar a pasta contendo as aplicações em node.js, o banco de dados e as páginas web, seguir os passos abaixo.
 
-## Compilando app.js no prompt de comando
+### Compilando app.js no prompt de comando
 Compilar a aplicação principal app.js utilizando ***node app.js*** no prompt de comando do windows.
 
 ### DialogFlow
