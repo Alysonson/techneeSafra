@@ -6,16 +6,19 @@ html, body, #home {
 #home {
     background: rgba(20, 122, 190, 0.993), linear-gradient(50deg, #ff4169, #7c26f8);
 }
+.inicio {
+    background-color: #babcc2;
+}
 
 body {
-    
+    /*background: rgba(171, 197, 177, 0.8);*/
     background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 nav.navbar-transparente {
     padding: 15px 0px;
-    background: rgba(171, 197, 177, 0.8);
+    background: #f2f5f6;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -152,7 +155,7 @@ h3 {
 }
 
 #servicos h2,h3 {
-    color: rgb(17, 58, 240);
+    color: #00003C !important;
 }
 
 #recursos {
@@ -160,11 +163,11 @@ h3 {
 }
 
 #recursos h3 {
-    color: rgb(17, 58, 240);
+    color: #00003C;
 }
 
 #recursos h2 {
-    color:rgb(17, 58, 240);
+    color:#00003C;
 }
 
 .albuns {
